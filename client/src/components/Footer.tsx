@@ -45,11 +45,26 @@ const Whatsapp: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
+const Facebook: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
 export const Footer: React.FC = () => {
   const socialLinks = {
     linkedin: "https://www.linkedin.com/company/dzinfotech",
     instagram: "https://www.instagram.com/dz.infotech?igsh=MTdmYnBtdXV4ZmN5Zw==",
-    whatsapp: "https://wa.me/919328525395"
+    whatsapp: "https://wa.me/919328525395",
+    facebook: "https://www.facebook.com/989311477591879/"
   };
 
   return (
@@ -83,6 +98,15 @@ export const Footer: React.FC = () => {
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-[#1877F2] hover:bg-white/10 transition-all duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
               </a>
               <a
                 href={socialLinks.whatsapp}
