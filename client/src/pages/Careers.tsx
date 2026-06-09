@@ -12,6 +12,9 @@ import {
   Mail,
   Loader2
 } from 'lucide-react';
+
+// Base API URL (Vite env variable). Falls back to localhost for dev.
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:5001';
 import { TiltCard } from '../components/TiltCard';
 
 interface JobPosition {
@@ -32,7 +35,7 @@ export const Careers: React.FC = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/jobs');
+        const res = await fetch(`${API_BASE}/api/jobs`);
         const data = await res.json();
         if (data && data.success) {
           setJobs(data.data);
@@ -325,8 +328,7 @@ export const Careers: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-0 sm:inset-x-4 sm:bottom-4 sm:top-4 inset-x-4 inset-y-4 sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-full sm:max-w-xl flex flex-col text-left overflow-y-auto"
-              style={{ maxHeight: '100vh' }}
+              className="fixed inset-0 sm:inset-x-4 sm:inset-y-4 sm:max-w-xl sm:mx-auto bg-white rounded-3xl shadow-2xl z-50 w-full flex flex-col overflow-y-auto max-h-screen"
             >
               {/* Modal Header — dark navy */}
               <div className="bg-primary px-6 py-5 flex justify-between items-start flex-shrink-0">

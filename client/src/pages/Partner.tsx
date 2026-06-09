@@ -10,6 +10,9 @@ import {
   AlertCircle 
 } from 'lucide-react';
 
+// Base API URL (Vite env variable). Falls back to localhost for dev.
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:5001';
+
 export const Partner: React.FC = () => {
   // Form fields state
   const [name, setName] = useState('');
@@ -37,7 +40,7 @@ export const Partner: React.FC = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/inquiries', {
+      const res = await fetch(`${API_BASE}/api/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
