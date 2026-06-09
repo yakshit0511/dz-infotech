@@ -104,6 +104,38 @@ export const Careers: React.FC = () => {
 
   // Apply submission is handled directly via user client triggers (Mailto/WhatsApp link)
 
+  // Role-specific apply messages
+  const getApplyMessages = (job: JobPosition) => {
+    const roleMessages: Record<string, { emailSubject: string; emailBody: string; whatsappMsg: string }> = {
+      'Flutter Developer': {
+        emailSubject: 'Application for Flutter Developer Position at DZ Infotech',
+        emailBody: `Hello DZ Infotech Team,%0D%0A%0D%0AI would like to apply for the Flutter Developer position.%0D%0A%0D%0AI have experience in Flutter development, state management (Bloc/Provider/Riverpod), and offline-first mobile applications.%0D%0A%0D%0APlease find my resume and details below:%0D%0A%0D%0AName: %0D%0APhone: %0D%0ALinkedIn: %0D%0APortfolio/GitHub: %0D%0AYears of Experience: %0D%0A%0D%0ALooking forward to hearing from you!%0D%0ABest regards`,
+        whatsappMsg: `Hello DZ Infotech! 👋\n\nI would like to apply for the *Flutter Developer* position.\n\nI have experience in Flutter, state management, and mobile app development.\n\nMy Details:\n• Name: \n• Phone: \n• LinkedIn/Portfolio: \n• Years of Experience: \n\nPlease let me know the next steps. Thank you! 🙏`
+      },
+      'Backend Developer (Node.js)': {
+        emailSubject: 'Application for Backend Developer (Node.js) Position at DZ Infotech',
+        emailBody: `Hello DZ Infotech Team,%0D%0A%0D%0AI would like to apply for the Backend Developer (Node.js) position.%0D%0A%0D%0AI have experience designing scalable RESTful APIs, MongoDB schema design, and cloud platforms.%0D%0A%0D%0APlease find my details below:%0D%0A%0D%0AName: %0D%0APhone: %0D%0ALinkedIn: %0D%0APortfolio/GitHub: %0D%0AYears of Experience: %0D%0A%0D%0ALooking forward to hearing from you!%0D%0ABest regards`,
+        whatsappMsg: `Hello DZ Infotech! 👋\n\nI would like to apply for the *Backend Developer (Node.js)* position.\n\nI have experience with Node.js, Express, MongoDB, and REST API design.\n\nMy Details:\n• Name: \n• Phone: \n• LinkedIn/GitHub: \n• Years of Experience: \n\nPlease let me know the next steps. Thank you! 🙏`
+      },
+      'Business Development Executive': {
+        emailSubject: 'Application for Business Development Executive Position at DZ Infotech',
+        emailBody: `Hello DZ Infotech Team,%0D%0A%0D%0AI would like to apply for the Business Development Executive position.%0D%0A%0D%0AI have experience in IT/Software sales, lead generation, and client engagement.%0D%0A%0D%0APlease find my details below:%0D%0A%0D%0AName: %0D%0APhone: %0D%0ALinkedIn: %0D%0AYears of Experience: %0D%0ACurrent CTC / Expected CTC: %0D%0A%0D%0ALooking forward to hearing from you!%0D%0ABest regards`,
+        whatsappMsg: `Hello DZ Infotech! 👋\n\nI would like to apply for the *Business Development Executive* position.\n\nI have experience in IT/Software sales and client relationship management.\n\nMy Details:\n• Name: \n• Phone: \n• LinkedIn: \n• Years of Experience: \n• Current/Expected CTC: \n\nPlease let me know the next steps. Thank you! 🙏`
+      },
+      'UI/UX Designer': {
+        emailSubject: 'Application for UI/UX Designer Position at DZ Infotech',
+        emailBody: `Hello DZ Infotech Team,%0D%0A%0D%0AI would like to apply for the UI/UX Designer position.%0D%0A%0D%0AI have experience in Figma/Adobe XD, creating wireframes, and building user-friendly interfaces.%0D%0A%0D%0APlease find my details below:%0D%0A%0D%0AName: %0D%0APhone: %0D%0APortfolio Link: %0D%0ALinkedIn: %0D%0AYears of Experience: %0D%0A%0D%0ALooking forward to hearing from you!%0D%0ABest regards`,
+        whatsappMsg: `Hello DZ Infotech! 👋\n\nI would like to apply for the *UI/UX Designer* position.\n\nI have experience in Figma/Adobe XD and building clean, modern user interfaces.\n\nMy Details:\n• Name: \n• Phone: \n• Portfolio Link: \n• LinkedIn: \n• Years of Experience: \n\nPlease let me know the next steps. Thank you! 🙏`
+      }
+    };
+
+    return roleMessages[job.title] || {
+      emailSubject: `Application for ${job.title} Position at DZ Infotech`,
+      emailBody: `Hello DZ Infotech Team,%0D%0A%0D%0AI would like to apply for the ${job.title} position.%0D%0A%0D%0APlease find my details below:%0D%0A%0D%0AName: %0D%0APhone: %0D%0ALinkedIn: %0D%0AYears of Experience: %0D%0A%0D%0ALooking forward to hearing from you!%0D%0ABest regards`,
+      whatsappMsg: `Hello DZ Infotech! 👋\n\nI would like to apply for the *${job.title}* position.\n\nMy Details:\n• Name: \n• Phone: \n• LinkedIn: \n• Years of Experience: \n\nPlease let me know the next steps. Thank you! 🙏`
+    };
+  };
+
   const scrollToPositions = () => {
     const element = document.getElementById('positions-section');
     if (element) {
@@ -293,72 +325,76 @@ export const Careers: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-x-4 bottom-4 top-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-2xl shadow-2xl z-50 p-6 sm:p-8 w-full max-w-lg overflow-y-auto max-h-[90vh] text-left"
+              className="fixed inset-x-4 bottom-4 top-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-xl flex flex-col text-left overflow-hidden"
             >
-              <div className="flex justify-between items-start border-b pb-4 mb-6">
+              {/* Modal Header */}
+              <div className="bg-primary p-6 flex justify-between items-start flex-shrink-0">
                 <div>
-                  <h3 className="text-xl font-bold font-poppins text-primary">Apply for {selectedJob.title}</h3>
-                  <p className="text-xs text-muted-gray uppercase font-bold tracking-widest mt-1">
-                    {selectedJob.department} // {selectedJob.location}
-                  </p>
+                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase"
+                  >{selectedJob.department} · {selectedJob.location} · {selectedJob.type}</span>
+                  <h3 className="text-xl sm:text-2xl font-black font-poppins text-white mt-1">Apply for {selectedJob.title}</h3>
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedJob(null)}
-                  className="text-gray-400 hover:text-accent p-1 transition-colors"
+                  className="text-white/60 hover:text-white p-1 transition-colors flex-shrink-0 ml-4"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="space-y-6">
-                {/* Job description blurb */}
-                <div className="p-4 bg-bg-light border border-card-border rounded-xl text-xs space-y-1.5 leading-relaxed text-muted-gray">
-                  <span className="font-bold text-primary block">Description:</span>
-                  <p className="mb-2">{selectedJob.description}</p>
-                  <span className="font-bold text-primary block">Key Requirements:</span>
-                  <ul className="list-disc pl-4 space-y-1">
-                    {selectedJob.requirements.map((req, rIdx) => (
-                      <li key={rIdx}>{req}</li>
-                    ))}
-                  </ul>
-                </div>
+              {/* Job Description - scrollable if needed */}
+              <div className="flex-1 overflow-y-auto px-6 pt-5 pb-3">
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">About the Role</p>
+                <p className="text-sm text-muted-gray leading-relaxed mb-4">{selectedJob.description}</p>
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Key Requirements</p>
+                <ul className="space-y-1.5">
+                  {selectedJob.requirements.map((req, rIdx) => (
+                    <li key={rIdx} className="flex items-start gap-2 text-sm text-muted-gray">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="space-y-4">
-                  <p className="text-sm font-semibold text-primary text-center">Choose how you would like to apply:</p>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Email Option */}
-                    <a 
-                      href={`mailto:info@dzinfotech.in?subject=Application%20for%20${encodeURIComponent(selectedJob.title)}%20Position`}
-                      className="group flex flex-col items-center justify-center p-6 bg-white border border-card-border rounded-2xl hover:bg-primary transition-all duration-300 text-center shadow-premium space-y-3"
-                    >
-                      <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                        <Mail className="w-6 h-6 text-accent group-hover:text-white" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-primary text-base group-hover:text-white transition-colors">Apply via Email</h4>
-                        <p className="text-xs text-muted-gray group-hover:text-gray-300 transition-colors mt-0.5">Send resume to info@dzinfotech.in</p>
-                      </div>
-                    </a>
+              {/* Apply Buttons — always visible at bottom */}
+              <div className="flex-shrink-0 p-6 border-t border-gray-100 bg-white">
+                <p className="text-xs text-center font-semibold text-muted-gray uppercase tracking-widest mb-4">Choose how you'd like to apply</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Email */}
+                  {(() => {
+                    const msgs = getApplyMessages(selectedJob);
+                    return (
+                      <>
+                        <a
+                          href={`mailto:info@dzinfotech.in?subject=${encodeURIComponent(msgs.emailSubject)}&body=${msgs.emailBody}`}
+                          className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-accent hover:bg-accent/5 transition-all duration-300 text-center"
+                        >
+                          <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-2 group-hover:bg-accent transition-colors duration-300">
+                            <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                          </div>
+                          <span className="font-bold text-sm text-primary group-hover:text-accent transition-colors">Email Us</span>
+                          <span className="text-[10px] text-muted-gray mt-0.5">info@dzinfotech.in</span>
+                        </a>
 
-                    {/* WhatsApp Option */}
-                    <a 
-                      href={`https://wa.me/919328525395?text=${encodeURIComponent(`Hello DZ Infotech, I would like to apply for the "${selectedJob.title}" position. Let me share my details.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex flex-col items-center justify-center p-6 bg-white border border-card-border rounded-2xl hover:bg-primary transition-all duration-300 text-center shadow-premium space-y-3"
-                    >
-                      <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-300">
-                        <svg className="w-6 h-6 fill-current text-[#25D366] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24">
-                          <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.92 9.92 0 004.775 1.22c5.507 0 9.991-4.479 9.992-9.986C22.002 6.478 17.518 2 12.012 2zm5.794 14.51c-.248.697-1.229 1.28-1.783 1.348-.48.058-1.107.25-3.218-.622-2.701-1.117-4.437-3.874-4.571-4.053-.134-.179-1.097-1.458-1.097-2.78 0-1.323.692-1.973.938-2.235.247-.262.538-.328.718-.328.18 0 .359.006.516.012.162.006.381-.06.596.457.221.53.757 1.848.822 1.98.066.133.11.288.021.464-.088.176-.133.287-.265.441-.133.155-.279.348-.398.469-.133.133-.272.279-.117.545.155.266.69 1.136 1.48 1.842.818.728 1.506.953 1.72.11.215.156.48.332.695.176.216-.156.48-.458.72-.782.242-.324.484-.227.81-.1.326.126 2.066 1.026 2.42 1.203.354.178.59.263.678.414.088.15.088.875-.16 1.572z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-primary text-base group-hover:text-white transition-colors">Apply via WhatsApp</h4>
-                        <p className="text-xs text-muted-gray group-hover:text-gray-300 transition-colors mt-0.5">Chat with our hiring team directly</p>
-                      </div>
-                    </a>
-                  </div>
+                        {/* WhatsApp */}
+                        <a
+                          href={`https://wa.me/919328525395?text=${encodeURIComponent(msgs.whatsappMsg)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-[#25D366] hover:bg-green-50 transition-all duration-300 text-center"
+                        >
+                          <div className="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-[#25D366] transition-colors duration-300">
+                            <svg className="w-5 h-5 fill-current text-[#25D366] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24">
+                              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.92 9.92 0 004.775 1.22c5.507 0 9.991-4.479 9.992-9.986C22.002 6.478 17.518 2 12.012 2zm5.794 14.51c-.248.697-1.229 1.28-1.783 1.348-.48.058-1.107.25-3.218-.622-2.701-1.117-4.437-3.874-4.571-4.053-.134-.179-1.097-1.458-1.097-2.78 0-1.323.692-1.973.938-2.235.247-.262.538-.328.718-.328.18 0 .359.006.516.012.162.006.381-.06.596.457.221.53.757 1.848.822 1.98.066.133.11.288.021.464-.088.176-.133.287-.265.441-.133.155-.279.348-.398.469-.133.133-.272.279-.117.545.155.266.69 1.136 1.48 1.842.818.728 1.506.953 1.72.11.215.156.48.332.695.176.216-.156.48-.458.72-.782.242-.324.484-.227.81-.1.326.126 2.066 1.026 2.42 1.203.354.178.59.263.678.414.088.15.088.875-.16 1.572z" />
+                            </svg>
+                          </div>
+                          <span className="font-bold text-sm text-primary group-hover:text-[#25D366] transition-colors">WhatsApp</span>
+                          <span className="text-[10px] text-muted-gray mt-0.5">+91 93285 25395</span>
+                        </a>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </motion.div>

@@ -39,7 +39,7 @@ export const Logo: React.FC<LogoProps> = ({ className = "h-12", iconOnly = false
             d="M 40 30 L 85 30 L 85 150 L 40 150 Z"
             fill={light ? '#FFFFFF' : 'url(#blueGrad)'}
           />
-          {/* Letter D Curved Right Part */}
+          {/* Letter D Curved Right Part — always orange to match brand logo */}
           <path
             d="M 85 30 C 135 30 170 70 170 90 C 170 110 135 150 85 150 Z M 85 55 L 85 125 C 112 125 130 110 130 90 C 130 70 112 55 85 55 Z"
             fill="url(#orangeGrad)"
