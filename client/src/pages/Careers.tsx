@@ -325,8 +325,8 @@ export const Careers: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-x-4 bottom-4 top-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-xl flex flex-col text-left overflow-y-auto"
-              style={{ height: 'calc(100vh - 80px)', maxHeight: '680px' }}
+              className="fixed inset-0 sm:inset-x-4 sm:bottom-4 sm:top-4 inset-x-4 inset-y-4 sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-full sm:max-w-xl flex flex-col text-left overflow-y-auto"
+              style={{ maxHeight: '100vh' }}
             >
               {/* Modal Header — dark navy */}
               <div className="bg-primary px-6 py-5 flex justify-between items-start flex-shrink-0">
