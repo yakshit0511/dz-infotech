@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 import { 
   Target, 
   Eye, 
-  Lightbulb, 
-  CheckCircle2, 
-  Users, 
   Mail, 
   Phone, 
   MapPin,
@@ -17,7 +14,7 @@ export const About: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  } as const;
 
   const timelineEvents = [
     {
@@ -96,24 +93,24 @@ export const About: React.FC = () => {
           {/* Right graphics - Mission/Vision side-by-side */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent">
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                   <Target className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Our Mission</h3>
-                <p className="text-xs text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Our Mission</h3>
+                <p className="text-xs text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   To build practical, scalable digital tools that give businesses complete operational control.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent">
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                   <Eye className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Our Vision</h3>
-                <p className="text-xs text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Our Vision</h3>
+                <p className="text-xs text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   To transform how industries operate globally through intelligent, accessible technology.
                 </p>
               </div>
@@ -137,9 +134,9 @@ export const About: React.FC = () => {
               { val: "Innovation", desc: "We continuously improve and evolve our solutions." }
             ].map((item, idx) => (
               <TiltCard key={idx}>
-                <div className="bg-white border border-card-border p-6 rounded-2xl space-y-3 h-full">
-                  <h3 className="text-lg font-bold font-poppins text-accent">{item.val}</h3>
-                  <p className="text-sm text-muted-gray leading-relaxed">{item.desc}</p>
+                <div className="group bg-white border border-card-border p-6 rounded-2xl space-y-3 h-full hover:bg-primary transition-all duration-300">
+                  <h3 className="text-lg font-bold font-poppins text-accent group-hover:text-white transition-colors duration-300">{item.val}</h3>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{item.desc}</p>
                 </div>
               </TiltCard>
             ))}
@@ -176,13 +173,13 @@ export const About: React.FC = () => {
 
                     {/* Timeline Card */}
                     <div className={`w-full md:w-[45%] pl-8 md:pl-0 ${isEven ? 'md:text-left md:pr-8' : 'md:text-right md:pl-8'}`}>
-                      <div className="bg-bg-light border border-card-border p-6 rounded-2xl shadow-premium inline-block w-full text-left">
+                      <div className="group bg-white border border-card-border p-6 rounded-2xl shadow-premium hover:bg-primary transition-all duration-300 inline-block w-full text-left">
                         <div className="flex items-center gap-1.5 text-accent font-bold text-xs uppercase mb-2">
                           <Calendar className="w-3.5 h-3.5" />
                           <span>{evt.date}</span>
                         </div>
-                        <h4 className="text-lg font-bold font-poppins text-primary mb-1">{evt.title}</h4>
-                        <p className="text-xs sm:text-sm text-muted-gray leading-relaxed">{evt.desc}</p>
+                        <h4 className="text-lg font-bold font-poppins text-primary mb-1 group-hover:text-white transition-colors duration-300">{evt.title}</h4>
+                        <p className="text-xs sm:text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{evt.desc}</p>
                       </div>
                     </div>
                     {/* Spacer for MD screens */}
@@ -206,14 +203,14 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {team.map((member, idx) => (
               <TiltCard key={idx}>
-                <div className="bg-white border border-card-border p-8 rounded-2xl text-center space-y-4 shadow-premium">
+                <div className="group bg-white border border-card-border p-8 rounded-2xl text-center space-y-4 shadow-premium hover:bg-primary transition-all duration-300">
                   {/* Initials Avatar */}
-                  <div className="w-20 h-20 rounded-full bg-primary text-white text-2xl font-black font-poppins mx-auto flex items-center justify-center border-4 border-white shadow-md">
+                  <div className="w-20 h-20 rounded-full bg-primary text-white text-2xl font-black font-poppins mx-auto flex items-center justify-center border-4 border-white shadow-md group-hover:bg-accent group-hover:border-primary transition-colors duration-300">
                     {member.initials}
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold font-poppins text-primary">{member.name}</h4>
-                    <span className="text-xs text-accent font-bold uppercase tracking-wider block mt-1">
+                    <h4 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">{member.name}</h4>
+                    <span className="text-xs text-accent font-bold uppercase tracking-wider block mt-1 group-hover:text-white/95 transition-colors duration-300">
                       {member.role}
                     </span>
                   </div>
@@ -233,37 +230,37 @@ export const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-            <div className="bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-accent" />
+            <div className="group bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-premium">
+              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                <Mail className="w-5 h-5 text-accent group-hover:text-white" />
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Email Us</span>
-                <a href="mailto:info@dzinfotech.in" className="text-sm font-bold text-primary hover:text-accent transition-colors">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Email Us</span>
+                <a href="mailto:info@dzinfotech.in" className="text-sm font-bold text-primary hover:text-accent group-hover:text-white group-hover:hover:text-accent transition-colors">
                   info@dzinfotech.in
                 </a>
               </div>
             </div>
 
-            <div className="bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-accent" />
+            <div className="group bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-premium">
+              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                <Phone className="w-5 h-5 text-accent group-hover:text-white" />
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Call Us</span>
-                <a href="tel:+919328525395" className="text-sm font-bold text-primary hover:text-accent transition-colors">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Call Us</span>
+                <a href="tel:+919328525395" className="text-sm font-bold text-primary hover:text-accent group-hover:text-white group-hover:hover:text-accent transition-colors">
                   +91 93285 25395
                 </a>
               </div>
             </div>
 
-            <div className="bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 text-accent" />
+            <div className="group bg-bg-light border border-card-border p-6 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-premium">
+              <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                <MapPin className="w-5 h-5 text-accent group-hover:text-white" />
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Location</span>
-                <span className="text-sm font-bold text-primary">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Location</span>
+                <span className="text-sm font-bold text-primary group-hover:text-white transition-colors">
                   Bhavnagar, Gujarat, India
                 </span>
               </div>

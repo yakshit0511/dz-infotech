@@ -35,23 +35,21 @@ export const Navbar: React.FC = () => {
   ];
 
   const activeStyle = "text-accent border-b-2 border-accent pb-1 font-semibold";
-  const inactiveStyle = "text-primary/80 hover:text-accent font-medium transition-colors duration-300 pb-1 border-b-2 border-transparent";
-
+  const inactiveStyle = "text-white/80 hover:text-white font-medium transition-colors duration-300 pb-1 border-b-2 border-transparent";
+ 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white shadow-md py-3'
-            : 'bg-transparent py-5'
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-primary shadow-lg border-b border-white/5 ${
+          scrolled ? 'py-3' : 'py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <Logo className="h-10 sm:h-12" />
+            <Logo className="h-10 sm:h-12" light />
           </Link>
-
+ 
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
@@ -64,26 +62,26 @@ export const Navbar: React.FC = () => {
               </NavLink>
             ))}
           </nav>
-
+ 
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
             <Link to="/partner">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(13, 27, 42, 0.2)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0px 8px 20px rgba(232, 98, 42, 0.25)" }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-primary text-white font-medium px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-primary/95 transition-all duration-300"
+                className="bg-accent text-white font-medium px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-accent/90 transition-all duration-300"
               >
                 Partner With Us
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </Link>
           </div>
-
+ 
           {/* Mobile Hamburger Toggle */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-primary hover:text-accent p-1 transition-colors"
+              className="text-white hover:text-accent p-1 transition-colors"
               aria-label="Toggle Menu"
             >
               {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}

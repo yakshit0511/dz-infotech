@@ -28,17 +28,17 @@
   }
   
   .text-glow {
-    text-shadow: 0 0 15px rgba(232, 98, 42, 0.4);
+    text-shadow: 0 0 15px rgba(232, 98, 42, 0.35);
   }
 }
 
-/* Custom styles for animations */
+/* Custom keyframes for premium animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-15px) rotate(1deg);
+    transform: translateY(-12px) rotate(0.5deg);
   }
 }
 
@@ -48,15 +48,28 @@
 
 @keyframes pulse-slow {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.15;
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.3;
   }
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(232, 98, 42, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(232, 98, 42, 0.65);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
 }
 
 /* Scrollbar customizations */

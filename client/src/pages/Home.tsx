@@ -23,7 +23,7 @@ export const Home: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  } as const;
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -197,12 +197,12 @@ export const Home: React.FC = () => {
           >
             {/* Card 1 */}
             <TiltCard>
-              <div className="h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
+              <div className="group h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4 hover:bg-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white group-hover:bg-accent transition-colors duration-300">
                   <Cpu className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-primary font-poppins">Custom Software</h4>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Custom Software</h4>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Tailored enterprise solutions designed to solve specific industry bottlenecks.
                 </p>
               </div>
@@ -210,12 +210,12 @@ export const Home: React.FC = () => {
 
             {/* Card 2 */}
             <TiltCard>
-              <div className="h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
+              <div className="group h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4 hover:bg-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white group-hover:bg-accent transition-colors duration-300">
                   <Smartphone className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-primary font-poppins">Mobile Apps</h4>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Mobile Apps</h4>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Powerful, offline-first mobile tools that empower field and site operations.
                 </p>
               </div>
@@ -223,12 +223,12 @@ export const Home: React.FC = () => {
 
             {/* Card 3 */}
             <TiltCard>
-              <div className="h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
+              <div className="group h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4 hover:bg-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white group-hover:bg-accent transition-colors duration-300">
                   <Zap className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-primary font-poppins">Workflow Automation</h4>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Workflow Automation</h4>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Eliminating manual errors by digitizing fragmented communication and reporting.
                 </p>
               </div>
@@ -236,12 +236,12 @@ export const Home: React.FC = () => {
 
             {/* Card 4 */}
             <TiltCard>
-              <div className="h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white">
+              <div className="group h-full bg-white rounded-xl p-6 border border-card-border flex flex-col text-left space-y-4 hover:bg-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white group-hover:bg-accent transition-colors duration-300">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-primary font-poppins">AI-Based Solutions</h4>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">AI-Based Solutions</h4>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Future-ready intelligence layers that provide predictive insights for growth.
                 </p>
               </div>
@@ -502,7 +502,7 @@ export const Home: React.FC = () => {
             
             <Link to="/partner" className="w-full lg:w-auto flex-shrink-0">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(232, 98, 42, 0.2)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(6, 182, 212, 0.2)" }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full lg:w-auto bg-primary text-white hover:bg-accent font-bold px-8 py-4 rounded-full transition-all duration-300 text-center"
               >

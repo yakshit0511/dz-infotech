@@ -7,7 +7,7 @@ import {
   RefreshCw, 
   Truck, 
   Box, 
-  Sitemap, 
+  Network, 
   CreditCard, 
   Wallet, 
   TrendingUp, 
@@ -23,7 +23,7 @@ export const Product: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  } as const;
 
   return (
     <div className="pt-20 overflow-hidden">
@@ -51,7 +51,7 @@ export const Product: React.FC = () => {
                 className="inline-block"
               >
                 <motion.button
-                  whileHover={{ scale: 1.03, boxShadow: "0 8px 20px rgba(232, 98, 42, 0.2)" }}
+                  whileHover={{ scale: 1.03, boxShadow: "0 8px 20px rgba(6, 182, 212, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   className="bg-accent text-white font-bold px-8 py-4 rounded-full flex items-center gap-2"
                 >
@@ -114,25 +114,25 @@ export const Product: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Activity className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Real-Time Progress Tracking</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Real-Time Progress Tracking</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Monitor site activity instantly with live updates and visual reports.
                   </p>
                 </div>
               </TiltCard>
 
-              {/* Card 2 - Highlighted Dark Navy Card */}
+              {/* Card 2 - Workforce Management */}
               <TiltCard>
-                <div className="bg-primary text-white border border-white/5 p-6 rounded-2xl text-left space-y-4 h-full shadow-lg">
-                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-accent">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Users className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-white font-poppins">Smart Workforce Management</h4>
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Smart Workforce Management</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Intelligent tracking and coordination of your field teams.
                   </p>
                 </div>
@@ -140,12 +140,12 @@ export const Product: React.FC = () => {
 
               {/* Card 3 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <RefreshCw className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Task & Workflow Automation</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Task & Workflow Automation</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Streamline repetitive site tasks and digital handoffs.
                   </p>
                 </div>
@@ -161,12 +161,12 @@ export const Product: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Truck className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Intelligent Vehicle Monitoring</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Intelligent Vehicle Monitoring</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Advanced tracking and telemetry for your fleet and machinery.
                   </p>
                 </div>
@@ -174,12 +174,12 @@ export const Product: React.FC = () => {
 
               {/* Card 2 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Box className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Inventory & Material Control</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Inventory & Material Control</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Real-time visibility into stock levels and usage patterns.
                   </p>
                 </div>
@@ -187,12 +187,12 @@ export const Product: React.FC = () => {
 
               {/* Card 3 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
-                    <Sitemap className="w-5 h-5" />
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                    <Network className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Labor Contractor Network</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Labor Contractor Network</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Centralized management of external labor and vendor partners.
                   </p>
                 </div>
@@ -210,12 +210,12 @@ export const Product: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Integrated Payment Tracking */}
               <TiltCard>
-                <div className="bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:shadow-premium-hover transition-all duration-300">
-                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border">
+                <div className="group bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:bg-primary transition-all duration-300">
+                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <CreditCard className="w-6 h-6" />
                   </div>
-                  <h4 className="text-xl font-bold text-primary font-poppins">Integrated Payment Tracking</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-xl font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Integrated Payment Tracking</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Manage all project disbursements and receivables in one place.
                   </p>
                 </div>
@@ -223,12 +223,12 @@ export const Product: React.FC = () => {
 
               {/* Automated Salary Management */}
               <TiltCard>
-                <div className="bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:shadow-premium-hover transition-all duration-300">
-                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border">
+                <div className="group bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:bg-primary transition-all duration-300">
+                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Wallet className="w-6 h-6" />
                   </div>
-                  <h4 className="text-xl font-bold text-primary font-poppins">Automated Salary Management</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-xl font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Automated Salary Management</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Streamlined payroll processing for site and office staff.
                   </p>
                 </div>
@@ -236,28 +236,27 @@ export const Product: React.FC = () => {
 
               {/* Live Profit & Loss Insights */}
               <TiltCard>
-                <div className="bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:shadow-premium-hover transition-all duration-300">
-                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border">
+                <div className="group bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:bg-primary transition-all duration-300">
+                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <TrendingUp className="w-6 h-6" />
                   </div>
-                  <h4 className="text-xl font-bold text-primary font-poppins">Live Profit & Loss Insights</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-xl font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Live Profit & Loss Insights</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Immediate visibility into project financial health and margins.
                   </p>
                 </div>
               </TiltCard>
             </div>
 
-            {/* Bottom: 1 standalone Dark Navy card matching second image reference */}
+            {/* Bottom: 1 standalone card */}
             <div className="max-w-sm">
               <TiltCard>
-                <div className="bg-primary text-white border border-white/5 p-8 rounded-3xl text-left space-y-4 shadow-xl">
-                  {/* Orange background for the calculator icon */}
-                  <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white shadow-glow">
+                <div className="group bg-white border border-card-border p-8 rounded-3xl text-left space-y-4 h-full shadow-premium hover:bg-primary transition-all duration-300">
+                  <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary border border-card-border group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <Calculator className="w-6 h-6" />
                   </div>
-                  <h4 className="text-xl font-bold text-white font-poppins">Advanced Rate Analysis Engine</h4>
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <h4 className="text-xl font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Advanced Rate Analysis Engine</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Data-driven costing and competitive rate estimation.
                   </p>
                 </div>
@@ -273,12 +272,12 @@ export const Product: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
               {/* Card 1 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <LayoutDashboard className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Centralized Analytics Dashboard</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Centralized Analytics Dashboard</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     A single source of truth for all your operational data.
                   </p>
                 </div>
@@ -286,12 +285,12 @@ export const Product: React.FC = () => {
 
               {/* Card 2 */}
               <TiltCard>
-                <div className="bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full">
-                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary">
+                <div className="group bg-bg-light border border-card-border p-6 rounded-2xl text-left space-y-4 h-full hover:bg-primary transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-card-border rounded-lg flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:border-transparent transition-all duration-300">
                     <FileText className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-primary font-poppins">Instant Report Generation</h4>
-                  <p className="text-sm text-muted-gray leading-relaxed">
+                  <h4 className="text-lg font-bold text-primary font-poppins group-hover:text-white transition-colors duration-300">Instant Report Generation</h4>
+                  <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     Professional, data-rich reports ready in seconds.
                   </p>
                 </div>

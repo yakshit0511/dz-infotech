@@ -10,7 +10,6 @@ import {
   Check, 
   ArrowRight,
   Code2,
-  Database,
   Layers,
   Fingerprint
 } from 'lucide-react';
@@ -20,7 +19,7 @@ export const Services: React.FC = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  } as const;
 
   return (
     <div className="pt-20 overflow-hidden">
@@ -301,7 +300,7 @@ export const Services: React.FC = () => {
                 </div>
 
                 <div className="p-3 bg-white/5 rounded-lg border border-white/5 flex justify-between items-center text-xs">
-                  <span className="text-gray-400 font-mono">FLOW: SITE_UPDATE -> ERP_SYNC</span>
+                  <span className="text-gray-400 font-mono">{"FLOW: SITE_UPDATE -> ERP_SYNC"}</span>
                   <span className="text-green-400 font-bold uppercase">Success</span>
                 </div>
               </div>
@@ -333,7 +332,7 @@ export const Services: React.FC = () => {
                     <line x1="190" y1="90" x2="260" y2="60" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
 
                     {/* Nodes */}
-                    <circle cx="40" cy="60" r="10" fill="#E8622A" />
+                    <circle cx="40" cy="60" r="10" fill="#06B6D4" />
                     <circle cx="110" cy="30" r="8" fill="#1E3A8A" stroke="white" strokeWidth="2" />
                     <circle cx="110" cy="90" r="8" fill="#1E3A8A" stroke="white" strokeWidth="2" />
                     <circle cx="190" cy="30" r="8" fill="#1E3A8A" stroke="white" strokeWidth="2" />
@@ -414,36 +413,36 @@ export const Services: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Code2 className="w-5 h-5" />
+              <div className="group bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Code2 className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Agile Development</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Agile Development</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Fast-paced iterations focused on delivering value early and refining based on real-world feedback.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Layers className="w-5 h-5" />
+              <div className="group bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Layers className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Scalable Infrastructure</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Scalable Infrastructure</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Cloud-native architectures designed to support high volume data and thousands of concurrent users.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Fingerprint className="w-5 h-5" />
+              <div className="group bg-bg-light border border-card-border p-8 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Fingerprint className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Data Privacy</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Data Privacy</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Enterprise-grade security and role-based access control built into the core of every solution.
                 </p>
               </div>

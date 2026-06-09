@@ -108,37 +108,37 @@ export const Partner: React.FC = () => {
 
             {/* Info Cards */}
             <div className="space-y-4">
-              <div className="bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 shadow-sm">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-accent" />
+              <div className="group bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-sm">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                  <Mail className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Email Us</span>
-                  <a href="mailto:info@dzinfotech.in" className="text-sm font-bold text-primary hover:text-accent transition-colors">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Email Us</span>
+                  <a href="mailto:info@dzinfotech.in" className="text-sm font-bold text-primary hover:text-accent group-hover:text-white group-hover:hover:text-accent transition-colors">
                     info@dzinfotech.in
                   </a>
                 </div>
               </div>
 
-              <div className="bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 shadow-sm">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-accent" />
+              <div className="group bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-sm">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                  <Phone className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Call Us</span>
-                  <a href="tel:+919328525395" className="text-sm font-bold text-primary hover:text-accent transition-colors">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Call Us</span>
+                  <a href="tel:+919328525395" className="text-sm font-bold text-primary hover:text-accent group-hover:text-white group-hover:hover:text-accent transition-colors">
                     +91 93285 25395
                   </a>
                 </div>
               </div>
 
-              <div className="bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 shadow-sm">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-accent" />
+              <div className="group bg-white border border-card-border p-5 rounded-2xl flex items-start gap-4 hover:bg-primary transition-all duration-300 shadow-sm">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors duration-300">
+                  <MapPin className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Registered HQ</span>
-                  <span className="text-sm font-bold text-primary">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block group-hover:text-white/80 transition-colors duration-300">Registered HQ</span>
+                  <span className="text-sm font-bold text-primary group-hover:text-white transition-colors">
                     Bhavnagar, Gujarat, India
                   </span>
                 </div>

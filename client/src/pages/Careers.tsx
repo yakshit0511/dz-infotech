@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Briefcase, 
   MapPin, 
   Clock, 
   ArrowRight, 
@@ -135,10 +134,7 @@ export const Careers: React.FC = () => {
     }
   };
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+
 
   return (
     <div className="pt-20 overflow-hidden">
@@ -173,48 +169,48 @@ export const Careers: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-accent" />
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Sparkles className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Impactful Work</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Impactful Work</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   You'll work on products used by real businesses in the field every day.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-accent" />
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <BookOpen className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Growth First</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Growth First</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   We invest in your learning, development, and career progression.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-accent" />
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Heart className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Collaborative Culture</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Collaborative Culture</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   Flat structure, open communication, and a team that cares.
                 </p>
               </div>
             </TiltCard>
 
             <TiltCard>
-              <div className="bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full">
-                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center">
-                  <Lightbulb className="w-5 h-5 text-accent" />
+              <div className="group bg-bg-light border border-card-border p-6 rounded-2xl space-y-4 h-full hover:bg-primary transition-all duration-300">
+                <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <Lightbulb className="w-5 h-5 text-accent group-hover:text-white" />
                 </div>
-                <h3 className="text-lg font-bold font-poppins text-primary">Innovation-Driven</h3>
-                <p className="text-sm text-muted-gray leading-relaxed">
+                <h3 className="text-lg font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">Innovation-Driven</h3>
+                <p className="text-sm text-muted-gray leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   We encourage new ideas and building things that matter.
                 </p>
               </div>
@@ -244,20 +240,20 @@ export const Careers: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white border border-card-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-premium hover:shadow-premium-hover transition-all duration-300 text-left"
+                  className="group bg-white border border-card-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-premium hover:bg-primary transition-all duration-300 text-left"
                 >
                   <div className="space-y-3.5">
-                    <h3 className="text-xl font-bold font-poppins text-primary">{job.title}</h3>
+                    <h3 className="text-xl font-bold font-poppins text-primary group-hover:text-white transition-colors duration-300">{job.title}</h3>
                     
                     <div className="flex flex-wrap items-center gap-3 text-xs text-muted-gray font-semibold">
-                      <span className="px-2.5 py-1 bg-primary/5 text-primary border border-primary/10 rounded-full font-mono uppercase">
+                      <span className="px-2.5 py-1 bg-primary/5 text-primary border border-primary/10 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/15 rounded-full font-mono uppercase transition-colors duration-300">
                         {job.department}
                       </span>
-                      <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1 group-hover:text-gray-300 transition-colors duration-300">
                         <MapPin className="w-3.5 h-3.5" />
                         {job.location}
                       </span>
-                      <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1 group-hover:text-gray-300 transition-colors duration-300">
                         <Clock className="w-3.5 h-3.5" />
                         {job.type}
                       </span>
@@ -266,9 +262,9 @@ export const Careers: React.FC = () => {
 
                   <motion.button
                     onClick={() => setSelectedJob(job)}
-                    whileHover={{ scale: 1.05, backgroundColor: "#E8622A", color: "#FFFFFF" }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded-full flex items-center justify-center gap-1.5 transition-all duration-200"
+                    className="w-full sm:w-auto bg-primary text-white font-bold px-6 py-2.5 rounded-full flex items-center justify-center gap-1.5 transition-all duration-200 group-hover:bg-accent group-hover:text-white group-hover:shadow-glow"
                   >
                     Apply Now
                     <ArrowRight className="w-4 h-4" />
