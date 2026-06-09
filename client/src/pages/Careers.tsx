@@ -325,29 +325,70 @@ export const Careers: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-x-4 bottom-4 top-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-xl sm:h-[80vh] sm:max-h-[80vh] flex flex-col text-left overflow-hidden"
+              className="fixed inset-x-4 bottom-4 top-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2 bg-white rounded-3xl shadow-2xl z-50 w-full max-w-xl flex flex-col text-left overflow-hidden"
+              style={{ maxHeight: 'calc(100vh - 80px)' }}
             >
-              {/* Modal Header */}
-              <div className="bg-primary p-6 flex justify-between items-start flex-shrink-0">
+              {/* Modal Header — dark navy */}
+              <div className="bg-primary px-6 py-5 flex justify-between items-start flex-shrink-0">
                 <div>
-                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase"
-                  >{selectedJob.department} · {selectedJob.location} · {selectedJob.type}</span>
-                  <h3 className="text-xl sm:text-2xl font-black font-poppins text-white mt-1">Apply for {selectedJob.title}</h3>
+                  <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">
+                    {selectedJob.department} · {selectedJob.location} · {selectedJob.type}
+                  </span>
+                  <h3 className="text-xl font-black font-poppins text-white mt-1">Apply for {selectedJob.title}</h3>
                 </div>
                 <button
                   onClick={() => setSelectedJob(null)}
-                  className="text-white/60 hover:text-white p-1 transition-colors flex-shrink-0 ml-4"
+                  className="text-white/60 hover:text-white p-1 transition-colors flex-shrink-0 ml-4 mt-1"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              {/* Job Description - scrollable if needed */}
-              <div className="flex-1 overflow-y-auto px-6 pt-5 pb-3">
+              {/* Apply Buttons — ALWAYS visible, right under header */}
+              <div className="flex-shrink-0 px-6 py-5 bg-white border-b border-gray-100">
+                <p className="text-[11px] text-center font-bold text-muted-gray uppercase tracking-widest mb-4">Choose how you'd like to apply</p>
+                {(() => {
+                  const msgs = getApplyMessages(selectedJob);
+                  return (
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Email */}
+                      <a
+                        href={`mailto:info@dzinfotech.in?subject=${encodeURIComponent(msgs.emailSubject)}&body=${msgs.emailBody}`}
+                        className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-accent hover:bg-accent/5 transition-all duration-300 text-center cursor-pointer"
+                      >
+                        <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-2 group-hover:bg-accent transition-colors duration-300">
+                          <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                        </div>
+                        <span className="font-bold text-sm text-primary group-hover:text-accent transition-colors">Email Us</span>
+                        <span className="text-[10px] text-muted-gray mt-0.5">info@dzinfotech.in</span>
+                      </a>
+
+                      {/* WhatsApp */}
+                      <a
+                        href={`https://wa.me/919328525395?text=${encodeURIComponent(msgs.whatsappMsg)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-[#25D366] hover:bg-green-50 transition-all duration-300 text-center cursor-pointer"
+                      >
+                        <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-[#25D366] transition-colors duration-300">
+                          <svg className="w-5 h-5 fill-current text-[#25D366] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24">
+                            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.92 9.92 0 004.775 1.22c5.507 0 9.991-4.479 9.992-9.986C22.002 6.478 17.518 2 12.012 2zm5.794 14.51c-.248.697-1.229 1.28-1.783 1.348-.48.058-1.107.25-3.218-.622-2.701-1.117-4.437-3.874-4.571-4.053-.134-.179-1.097-1.458-1.097-2.78 0-1.323.692-1.973.938-2.235.247-.262.538-.328.718-.328.18 0 .359.006.516.012.162.006.381-.06.596.457.221.53.757 1.848.822 1.98.066.133.11.288.021.464-.088.176-.133.287-.265.441-.133.155-.279.348-.398.469-.133.133-.272.279-.117.545.155.266.69 1.136 1.48 1.842.818.728 1.506.953 1.72.11.215.156.48.332.695.176.216-.156.48-.458.72-.782.242-.324.484-.227.81-.1.326.126 2.066 1.026 2.42 1.203.354.178.59.263.678.414.088.15.088.875-.16 1.572z" />
+                          </svg>
+                        </div>
+                        <span className="font-bold text-sm text-primary group-hover:text-[#25D366] transition-colors">WhatsApp</span>
+                        <span className="text-[10px] text-muted-gray mt-0.5">+91 93285 25395</span>
+                      </a>
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* Job Description — scrollable, below the buttons */}
+              <div className="flex-1 overflow-y-auto px-6 py-5">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">About the Role</p>
                 <p className="text-sm text-muted-gray leading-relaxed mb-4">{selectedJob.description}</p>
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Key Requirements</p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 pb-2">
                   {selectedJob.requirements.map((req, rIdx) => (
                     <li key={rIdx} className="flex items-start gap-2 text-sm text-muted-gray">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0"></span>
@@ -356,48 +397,8 @@ export const Careers: React.FC = () => {
                   ))}
                 </ul>
               </div>
-
-              {/* Apply Buttons — always visible at bottom */}
-              <div className="flex-shrink-0 p-6 border-t border-gray-100 bg-white">
-                <p className="text-xs text-center font-semibold text-muted-gray uppercase tracking-widest mb-4">Choose how you'd like to apply</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Email */}
-                  {(() => {
-                    const msgs = getApplyMessages(selectedJob);
-                    return (
-                      <>
-                        <a
-                          href={`mailto:info@dzinfotech.in?subject=${encodeURIComponent(msgs.emailSubject)}&body=${msgs.emailBody}`}
-                          className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-accent hover:bg-accent/5 transition-all duration-300 text-center"
-                        >
-                          <div className="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-2 group-hover:bg-accent transition-colors duration-300">
-                            <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
-                          </div>
-                          <span className="font-bold text-sm text-primary group-hover:text-accent transition-colors">Email Us</span>
-                          <span className="text-[10px] text-muted-gray mt-0.5">info@dzinfotech.in</span>
-                        </a>
-
-                        {/* WhatsApp */}
-                        <a
-                          href={`https://wa.me/919328525395?text=${encodeURIComponent(msgs.whatsappMsg)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group flex flex-col items-center justify-center p-4 bg-bg-light border-2 border-transparent rounded-2xl hover:border-[#25D366] hover:bg-green-50 transition-all duration-300 text-center"
-                        >
-                          <div className="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center mb-2 group-hover:bg-[#25D366] transition-colors duration-300">
-                            <svg className="w-5 h-5 fill-current text-[#25D366] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24">
-                              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.92 9.92 0 004.775 1.22c5.507 0 9.991-4.479 9.992-9.986C22.002 6.478 17.518 2 12.012 2zm5.794 14.51c-.248.697-1.229 1.28-1.783 1.348-.48.058-1.107.25-3.218-.622-2.701-1.117-4.437-3.874-4.571-4.053-.134-.179-1.097-1.458-1.097-2.78 0-1.323.692-1.973.938-2.235.247-.262.538-.328.718-.328.18 0 .359.006.516.012.162.006.381-.06.596.457.221.53.757 1.848.822 1.98.066.133.11.288.021.464-.088.176-.133.287-.265.441-.133.155-.279.348-.398.469-.133.133-.272.279-.117.545.155.266.69 1.136 1.48 1.842.818.728 1.506.953 1.72.11.215.156.48.332.695.176.216-.156.48-.458.72-.782.242-.324.484-.227.81-.1.326.126 2.066 1.026 2.42 1.203.354.178.59.263.678.414.088.15.088.875-.16 1.572z" />
-                            </svg>
-                          </div>
-                          <span className="font-bold text-sm text-primary group-hover:text-[#25D366] transition-colors">WhatsApp</span>
-                          <span className="text-[10px] text-muted-gray mt-0.5">+91 93285 25395</span>
-                        </a>
-                      </>
-                    );
-                  })()}
-                </div>
-              </div>
             </motion.div>
+
           </>
         )}
       </AnimatePresence>
