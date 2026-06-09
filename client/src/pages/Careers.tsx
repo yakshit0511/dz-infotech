@@ -9,7 +9,7 @@ import {
   Heart, 
   Lightbulb,
   X,
-  CheckCircle,
+  Mail,
   Loader2
 } from 'lucide-react';
 import { TiltCard } from '../components/TiltCard';
@@ -27,13 +27,7 @@ export const Careers: React.FC = () => {
   const [jobs, setJobs] = useState<JobPosition[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedJob, setSelectedJob] = useState<JobPosition | null>(null);
-  const [submitting, setSubmitting] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
-  
-  // Apply Form state
-  const [applicantName, setApplicantName] = useState('');
-  const [applicantEmail, setApplicantEmail] = useState('');
-  const [applicantMessage, setApplicantMessage] = useState('');
+  // Apply submission handled directly via triggers
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -108,24 +102,7 @@ export const Careers: React.FC = () => {
     fetchJobs();
   }, []);
 
-  const handleApplySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!applicantName || !applicantEmail) return;
-
-    setSubmitting(true);
-    // Simulate API application submission
-    setTimeout(() => {
-      setSubmitting(false);
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        setSelectedJob(null);
-        setApplicantName('');
-        setApplicantEmail('');
-        setApplicantMessage('');
-      }, 2000);
-    }, 1200);
-  };
+  // Apply submission is handled directly via user client triggers (Mailto/WhatsApp link)
 
   const scrollToPositions = () => {
     const element = document.getElementById('positions-section');
@@ -333,83 +310,57 @@ export const Careers: React.FC = () => {
                 </button>
               </div>
 
-              {success ? (
-                <motion.div 
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="py-12 flex flex-col items-center justify-center text-center space-y-4"
-                >
-                  <CheckCircle className="w-16 h-16 text-green-500" />
-                  <h4 className="text-lg font-bold text-primary">Application Submitted!</h4>
-                  <p className="text-sm text-muted-gray">Thank you for applying. Our team will review your application soon.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleApplySubmit} className="space-y-4">
-                  {/* Job description blurb */}
-                  <div className="p-3 bg-bg-light border rounded-lg text-xs space-y-1 leading-relaxed text-muted-gray">
-                    <span className="font-bold text-primary block">Description:</span>
-                    <p>{selectedJob.description}</p>
-                    <span className="font-bold text-primary block mt-2">Key Requirements:</span>
-                    <ul className="list-disc pl-4 space-y-0.5">
-                      {selectedJob.requirements.map((req, rIdx) => (
-                        <li key={rIdx}>{req}</li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="space-y-6">
+                {/* Job description blurb */}
+                <div className="p-4 bg-bg-light border border-card-border rounded-xl text-xs space-y-1.5 leading-relaxed text-muted-gray">
+                  <span className="font-bold text-primary block">Description:</span>
+                  <p className="mb-2">{selectedJob.description}</p>
+                  <span className="font-bold text-primary block">Key Requirements:</span>
+                  <ul className="list-disc pl-4 space-y-1">
+                    {selectedJob.requirements.map((req, rIdx) => (
+                      <li key={rIdx}>{req}</li>
+                    ))}
+                  </ul>
+                </div>
 
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-primary block uppercase">Full Name *</label>
-                    <input 
-                      type="text" 
-                      required
-                      value={applicantName}
-                      onChange={(e) => setApplicantName(e.target.value)}
-                      className="w-full bg-bg-light border border-card-border p-2.5 rounded-lg text-sm focus:outline-none focus:border-accent"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-primary block uppercase">Email Address *</label>
-                    <input 
-                      type="email" 
-                      required
-                      value={applicantEmail}
-                      onChange={(e) => setApplicantEmail(e.target.value)}
-                      className="w-full bg-bg-light border border-card-border p-2.5 rounded-lg text-sm focus:outline-none focus:border-accent"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-primary block uppercase">Cover Letter / Note</label>
-                    <textarea 
-                      value={applicantMessage}
-                      onChange={(e) => setApplicantMessage(e.target.value)}
-                      rows={3}
-                      className="w-full bg-bg-light border border-card-border p-2.5 rounded-lg text-sm focus:outline-none focus:border-accent resize-none"
-                      placeholder="Tell us why you are a great fit..."
-                    />
-                  </div>
-
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="w-full bg-primary text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2"
+                <div className="space-y-4">
+                  <p className="text-sm font-semibold text-primary text-center">Choose how you would like to apply:</p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Email Option */}
+                    <a 
+                      href={`mailto:info@dzinfotech.in?subject=Application%20for%20${encodeURIComponent(selectedJob.title)}%20Position`}
+                      className="group flex flex-col items-center justify-center p-6 bg-white border border-card-border rounded-2xl hover:bg-primary transition-all duration-300 text-center shadow-premium space-y-3"
                     >
-                      {submitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Submitting Application...
-                        </>
-                      ) : (
-                        'Submit Application'
-                      )}
-                    </button>
+                      <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                        <Mail className="w-6 h-6 text-accent group-hover:text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-primary text-base group-hover:text-white transition-colors">Apply via Email</h4>
+                        <p className="text-xs text-muted-gray group-hover:text-gray-300 transition-colors mt-0.5">Send resume to info@dzinfotech.in</p>
+                      </div>
+                    </a>
+
+                    {/* WhatsApp Option */}
+                    <a 
+                      href={`https://wa.me/919328525395?text=${encodeURIComponent(`Hello DZ Infotech, I would like to apply for the "${selectedJob.title}" position. Let me share my details.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col items-center justify-center p-6 bg-white border border-card-border rounded-2xl hover:bg-primary transition-all duration-300 text-center shadow-premium space-y-3"
+                    >
+                      <div className="w-12 h-12 bg-bg-light rounded-xl flex items-center justify-center text-primary group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-300">
+                        <svg className="w-6 h-6 fill-current text-[#25D366] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24">
+                          <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.92 9.92 0 004.775 1.22c5.507 0 9.991-4.479 9.992-9.986C22.002 6.478 17.518 2 12.012 2zm5.794 14.51c-.248.697-1.229 1.28-1.783 1.348-.48.058-1.107.25-3.218-.622-2.701-1.117-4.437-3.874-4.571-4.053-.134-.179-1.097-1.458-1.097-2.78 0-1.323.692-1.973.938-2.235.247-.262.538-.328.718-.328.18 0 .359.006.516.012.162.006.381-.06.596.457.221.53.757 1.848.822 1.98.066.133.11.288.021.464-.088.176-.133.287-.265.441-.133.155-.279.348-.398.469-.133.133-.272.279-.117.545.155.266.69 1.136 1.48 1.842.818.728 1.506.953 1.72.11.215.156.48.332.695.176.216-.156.48-.458.72-.782.242-.324.484-.227.81-.1.326.126 2.066 1.026 2.42 1.203.354.178.59.263.678.414.088.15.088.875-.16 1.572z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-primary text-base group-hover:text-white transition-colors">Apply via WhatsApp</h4>
+                        <p className="text-xs text-muted-gray group-hover:text-gray-300 transition-colors mt-0.5">Chat with our hiring team directly</p>
+                      </div>
+                    </a>
                   </div>
-                </form>
-              )}
+                </div>
+              </div>
             </motion.div>
           </>
         )}
